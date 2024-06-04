@@ -87,7 +87,7 @@ class Localize {
      * @throws \Exception
      */
 	protected static function getTranslationContent($filename) {
-		$path = __DIR__ . '/../../../../config/' . $filename;
+		$path = __DIR__ . '/../../../../../config/' . $filename;
 		if (!file_exists($path)) {
             throw new \Exception('TRANSLATION NOT FOUND: ' . $path);
 		}
