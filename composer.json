@@ -5,9 +5,7 @@
     "version": "1.0.1",
     "autoload": {
         "psr-4": {
-            "deepcommerce\\phpshop\\Core\\": "Core/",
-            "deepcommerce\\phpshop\\Enum\\": "Enum/",
-            "deepcommerce\\phpshop\\Helper\\": "Helper/"
+            "Deepcommerce\\Phpshop\\": "src/"
         }
     },
     "require": {
