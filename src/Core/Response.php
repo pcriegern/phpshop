@@ -26,13 +26,13 @@ class Response {
     /**
      * @var string Template Directory
      */
-    private $templateDir = __DIR__ . '/../../../../templates';
+    private $templateDir = __DIR__ . '/../../../../../templates';
 
     /**
      * @var array Parser Config
      */
     private $parserConfig = [
-            'cache'      => __DIR__ . '/../../../templates/cache',
+            'cache'      => __DIR__ . '/../../../../templates/cache',
             'autoescape' => false,
             'debug'      => false,
     ];
