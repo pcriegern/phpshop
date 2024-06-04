@@ -5,10 +5,10 @@ namespace deepcommerce\phpshop\Helper;
 use \deepcommerce\phpshop\Core\Localize;
 
 /**
- * Class FormHandler
+ * Class Formhandler
  * @package deepcommerce\Helper
  */
-class FormHandler {
+class Formhandler {
 
     private $formElements = [];
     private $formValues = [];
