@@ -2,7 +2,7 @@
     "name": "deepcommerce/phpshop",
     "description": "Collection of PHP classes to support creating a DeepCommerce Backen-for-Frontend",
     "license": "proprietary",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "autoload": {
         "psr-4": {
             "Deepcommerce\\Phpshop\\": "src/"
