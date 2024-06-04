@@ -3,6 +3,13 @@
     "description": "Collection of PHP classes to support creating a DeepCommerce Backen-for-Frontend",
     "license": "proprietary",
     "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "deepcommerce\\phpshop\\Core": "Core/",
+            "deepcommerce\\phpshop\\Enum": "Enum/",
+            "deepcommerce\\phpshop\\Helper": "Helper/"
+        }
+    },
     "require": {
         "php": ">=7.4"
     }
