@@ -2,6 +2,8 @@
 
 namespace Deepcommerce\Phpshop\Core;
 
+use Deepcommerce\Phpshop\Core\Cache;
+
 class Api {
 
 	/**
@@ -61,19 +63,63 @@ class Api {
 		return $json;
 	}
 
-	public static function get ($path) {
-		return static::request('GET', $path);
+	/**
+	 * Get data from the API by GET Request
+	 * @param string $path
+	 * @param bool $useCache
+	 * @return mixed
+	 */
+	public static function get ($path, $useCache = false) {
+		if ($useCache) {
+			$cache = new Cache($path);
+			if ($cache->hit()) {
+				return $cache->get();
+			}
+		}
+		$data = static::request('GET', $path);
+		if ($useCache) {
+			$cache->set($data);
+		}
+		return $data;
 	}
+
+	/**
+	 * Post data to the API
+	 * @param string $path
+	 * @param mixed $data
+	 * @return mixed
+	 */
 	public static function post ($path, $data) {
 		return static::request('POST', $path, $data);
 	}
+
+	/**
+	 * Patch data to the API
+	 * @param string $path
+	 * @param mixed $data
+	 * @return mixed
+	 */
 	public static function patch ($path, $data) {
 		return static::request('PATCH', $path, $data);
 	}
+
+	/**
+	 * Put data to the API
+	 * @param string $path
+	 * @param mixed $data
+	 * @return mixed
+	 */
 	public static function put ($path, $data) {
 		return static::request('PUT', $path, $data);
 	}
+
+	/**
+	 * Delete data from the API
+	 * @param string $path
+	 * @return mixed
+	 */
 	public static function delete ($path) {
 		return static::request('DELETE', $path);
 	}
+
 }
