@@ -31,6 +31,11 @@ class Cache {
     private $filename;
 
     /**
+     * @var boolean useCache
+     */
+    private static $useCache = true;
+
+    /**
      * Set default TTL
      */
     public static function setDefaultTtl($ttl) {
@@ -42,6 +47,9 @@ class Cache {
      */
     public static function setCacheDir($dir) {
         static::$cacheDir = $dir;
+        if ($dir == 'DISABLED') {
+            static::$useCache = false;
+        }
     }
 
     /**
@@ -50,6 +58,9 @@ class Cache {
      * @param int $customTtl
      */
     public function __construct($key, $customTtl = 0) {
+        if (!static::$useCache) {
+            return false;
+        }
         $this->key = $key;
         $this->ttl = ($customTtl > 0) ? $this->ttl = $customTtl: static::$defaultTtl;
         if (is_array($key) || is_object($key)) {
@@ -63,6 +74,9 @@ class Cache {
      * @return bool
      */
     public function hit() {
+        if (!static::$useCache) {
+            return false;
+        }
         if (!is_file($this->filename)) {
             return false;
         }
@@ -90,6 +104,9 @@ class Cache {
      * @return void
      */
     public function set($data) {
+        if (!static::$useCache) {
+            return false;
+        }
         file_put_contents($this->filename, serialize($data));
     }
 
