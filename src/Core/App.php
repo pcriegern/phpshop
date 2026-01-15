@@ -38,7 +38,7 @@ class App {
      */
     public function request() {
         if (empty($this->request)) {
-            $this->request = new Request(@$_SERVER['REDIRECT_URL'] ?: '', @$_SERVER['SCRIPT_NAME'] ?: '', @$_SERVER['REQUEST_METHOD'] ?: 'GET');
+            $this->request = new Request(@$_SERVER['REDIRECT_URL'] ?: @$_SERVER['REQUEST_URI'] ?: '', @$_SERVER['SCRIPT_NAME'] ?: '', @$_SERVER['REQUEST_METHOD'] ?: 'GET');
         }
         return $this->request;
     }
